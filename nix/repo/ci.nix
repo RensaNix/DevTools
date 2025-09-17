@@ -3,8 +3,19 @@
 in
   cilib.mkCI {
     pipelines."default" = {
-      stages = ["build" "deploy"];
+      stages = ["test" "build" "deploy"];
       jobs = {
+        "test" = {
+          stage = "test";
+          script = [
+            "nix run .#tests -- --junit=junit.xml"
+          ];
+          allow_failure = true;
+          artifacts = {
+            when = "always";
+            reports.junit = "junit.xml";
+          };
+        };
         "docs" = {
           stage = "build";
           script = [
