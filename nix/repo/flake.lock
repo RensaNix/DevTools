@@ -3,11 +3,11 @@
     "devshell": {
       "locked": {
         "dir": "lib",
-        "lastModified": 1755673398,
-        "narHash": "sha256-51MmR+Eo1+bKDd/Ss77wwTqi4yAR2xgmyCSEbKWSpj0=",
+        "lastModified": 1758101464,
+        "narHash": "sha256-ahYofFaZeEkpsF6Rrkjh43Sp9miA2yHJ3dMsOVgO8sw=",
         "owner": "rensa-nix",
         "repo": "devshell",
-        "rev": "e76bef387e8a4574f9b6d37b1a424e706491af08",
+        "rev": "bfdd94e38fdede5aaa2d6ef6dac3d7d8617201eb",
         "type": "gitlab"
       },
       "original": {

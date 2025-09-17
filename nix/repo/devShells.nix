@@ -44,6 +44,7 @@ in {
             name = "treefmt";
             stage_fixed = true;
             run = "${treefmtWrapper}/bin/treefmt";
+            env.TERM = "dumb";
           }
         ];
       };
