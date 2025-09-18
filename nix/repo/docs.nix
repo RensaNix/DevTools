@@ -37,7 +37,8 @@ in
         includeDir = toString optionsDocs;
       };
       config = {
-        site_name = "Devtools";
+        site_name = "DevTools";
+        site_url = "https://devtools.rensa.projects.tf";
         repo_name = "rensa-nix/devtools";
         repo_url = "https://gitlab.com/rensa-nix/devtools";
         extra_css = ["style.css"];
