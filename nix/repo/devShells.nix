@@ -54,6 +54,14 @@ in {
       };
     };
 
+    process-compose.config.processes = {
+      hello.command = "echo 'Hello World'";
+      pc = {
+        command = "echo 'From Process Compose'";
+        depends_on.hello.condition = "process_completed";
+      };
+    };
+
     cocogitto.config.changelog = {
       path = "CHANGELOG.md";
       template = "remote";
