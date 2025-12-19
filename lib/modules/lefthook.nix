@@ -54,12 +54,6 @@
     if [ "$1" = "install" ]; then
       echo "Warning, using 'lefthook install' should not be used, use the shellHook instead"
     fi
-    if [ "$1" = "install" ]; then
-      echo "Warning, using 'lefthook install' should not be used, use the shellHook instead"
-    fi
-    if [ "$1" = "install" ]; then
-      echo "Warning, using 'lefthook install' should not be used, use the shellHook instead"
-    fi
     LEFTHOOK_CONFIG="${lefthookConfig}" ${pkgs.lefthook}/bin/lefthook ''${@:1}
   '';
 in {
