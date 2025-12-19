@@ -3,8 +3,8 @@
   cell,
   ...
 }: let
-  inherit (inputs) self pkgs devshell soonix treefmt;
-  inherit (cell) ci;
+  inherit (inputs) self pkgs devshell treefmt;
+  inherit (cell) soonix;
 
   treefmtWrapper = treefmt.mkWrapper pkgs {
     programs = {
@@ -20,7 +20,6 @@ in {
       "${self}/lib/modules"
       soonix.devshellModule
     ];
-    soonix.hooks.ci = ci.soonix;
     packages = [
       pkgs.hello
       treefmtWrapper
@@ -45,6 +44,11 @@ in {
             stage_fixed = true;
             run = "${treefmtWrapper}/bin/treefmt";
             env.TERM = "dumb";
+          }
+          {
+            name = "soonix";
+            stage_fixed = true;
+            run = "${soonix.shellHookFile}";
           }
         ];
       };
