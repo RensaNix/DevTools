@@ -17,7 +17,7 @@ in
             commands = [
               "nix-portable nix run .#soonix:update"
             ];
-            updateMode = "branch";
+            executionMode = "branch";
           };
           lockFileMaintenance = {
             enabled = true;

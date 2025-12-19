@@ -18,6 +18,6 @@
     "commands": [
       "nix-portable nix run .#soonix:update"
     ],
-    "updateMode": "branch"
+    "executionMode": "branch"
   }
 }
