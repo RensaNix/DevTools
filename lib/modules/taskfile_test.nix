@@ -14,7 +14,7 @@ in {
         script = let
           shell = devshell.mkShell {
             imports = [module];
-            task.enable = true;
+            task."default" = {};
           };
         in
           # sh
@@ -29,10 +29,7 @@ in {
         script = let
           shell = devshell.mkShell {
             imports = [module];
-            task = {
-              enable = true;
-              alias = ",";
-            };
+            task."," = {};
           };
         in
           # sh

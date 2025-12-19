@@ -25,12 +25,9 @@ in {
       treefmtWrapper
     ];
 
-    task = {
-      alias = ",";
-      tasks = {
-        "hello" = {
-          cmd = "echo world!";
-        };
+    task.",".tasks = {
+      "hello" = {
+        cmd = "echo world!";
       };
     };
 
@@ -54,7 +51,7 @@ in {
       };
     };
 
-    process-compose.config.processes = {
+    process-compose."default".config.processes = {
       hello.command = "echo 'Hello World'";
       pc = {
         command = "echo 'From Process Compose'";

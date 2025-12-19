@@ -13,6 +13,8 @@ devshell.mkShell {
 
   # use the modules
   lefthook.enable = true;
+
+  task.",".tasks = { ... };
 }
 ```
 
