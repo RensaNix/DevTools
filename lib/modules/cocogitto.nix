@@ -4,32 +4,22 @@
   config,
   ...
 }: let
-  inherit (lib) mkEnableOption mkOption mkIf types;
+  inherit (lib) mkEnableOption mkOption mkIf types assertMsg versionAtLeast;
   cfg = config.cocogitto;
 
-  # we need a newer version than in nixpkgs, since the PR which adds `--config`
-  # didn't land in a release yet
-  cocogitto = pkgs.cocogitto.overrideAttrs (_prev: {
-    version = "2025-09-11";
-    src = pkgs.fetchFromGitHub {
-      owner = "oknozor";
-      repo = "cocogitto";
-      rev = "031cc238cb3e3e8aa3a525c1df089c3e70020efc";
-      hash = "sha256-fyhugacBLJPMqHWxoxBTFhIE3wHDB9xdrqJYzJc36I0=";
-    };
-  });
-
   configFile = (pkgs.formats.toml {}).generate "cog.toml" cfg.config;
-  cogAlias = pkgs.writeTextFile {
-    name = "cog-alias";
-    destination = "/bin/${cfg.alias}";
-    executable = true;
-    text =
-      # sh
-      ''
-        ${cocogitto}/bin/cog --config "${configFile}" ''${@:1}
-      '';
-  };
+  cogAlias = assert assertMsg (versionAtLeast pkgs.cocogitto.version "6.4")
+  "cocogitto needs to be version 6.4 or higher to support the --config param";
+    pkgs.writeTextFile {
+      name = "cog-alias";
+      destination = "/bin/${cfg.alias}";
+      executable = true;
+      text =
+        # sh
+        ''
+          ${pkgs.cocogitto}/bin/cog --config "${configFile}" ''${@:1}
+        '';
+    };
 in {
   options.cocogitto = {
     enable =

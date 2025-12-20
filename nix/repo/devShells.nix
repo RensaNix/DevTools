@@ -32,7 +32,6 @@ in {
     };
 
     lefthook.config = {
-      skip_output = ["meta" "execution_out"];
       "pre-commit" = {
         parallel = true;
         jobs = [
@@ -45,7 +44,7 @@ in {
           {
             name = "soonix";
             stage_fixed = true;
-            run = "${soonix.shellHookFile}";
+            run = "${soonix.packages."soonix:update"}/bin/soonix:update";
           }
         ];
       };
