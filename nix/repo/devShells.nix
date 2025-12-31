@@ -58,12 +58,22 @@ in {
       };
     };
 
-    cocogitto.config.changelog = {
-      path = "CHANGELOG.md";
-      template = "remote";
-      remote = "gitlab.com";
-      repository = "devtools";
-      owner = "rensa-nix";
+    cocogitto.config = {
+      tag_prefix = "v";
+      ignore_merge_commits = true;
+      changelog = {
+        authors = [
+          {
+            username = "TECHNOFAB";
+            signature = "technofab";
+          }
+        ];
+        path = "CHANGELOG.md";
+        template = "remote";
+        remote = "gitlab.com";
+        repository = "devtools";
+        owner = "rensa-nix";
+      };
     };
   };
 }
